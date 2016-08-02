@@ -21,22 +21,17 @@ var MyApp;
         }());
         Controllers.AdminController = AdminController;
         angular.module('MyApp').controller('AdminController', AdminController);
-        var products = [
-            { id: 1, name: 'laptop', price: 344.99 },
-            { id: 2, name: 'tesla', price: 9994.99 },
-            { id: 3, name: 'apple', price: 333.99 }
-        ];
         var ProductsController = (function () {
-            function ProductsController() {
-                this.products = products;
+            function ProductsController(productService) {
+                this.products = productService.list();
             }
             return ProductsController;
         }());
         Controllers.ProductsController = ProductsController;
         var ProductDetailsController = (function () {
-            function ProductDetailsController($stateParams) {
-                console.log($stateParams);
-                this.product = products.filter(function (p) { return p.id == $stateParams['id']; })[0];
+            function ProductDetailsController($stateParams, productService) {
+                var id = $stateParams['id'];
+                this.product = productService.get(id);
             }
             return ProductDetailsController;
         }());
