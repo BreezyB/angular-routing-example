@@ -19,6 +19,16 @@ namespace MyApp {
       templateUrl: 'ngApp/page2.html',
       controller: MyApp.Controllers.Page2Controller,
       controllerAs: 'vm'
+    }).state('ProductList', {
+      url: '/products',
+      templateUrl: 'ngApp/products.html',
+      controller: MyApp.Controllers.ProductsController,
+      controllerAs: 'vm'
+    }).state('ProductDetails', {
+      url: '/productDetails/:id',
+      templateUrl: 'ngApp/productDetails.html',
+      controller: MyApp.Controllers.ProductDetailsController,
+      controllerAs: 'vm'
     });
 
     $urlRouterProvider.otherwise('/');
